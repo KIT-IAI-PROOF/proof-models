@@ -1,0 +1,145 @@
+{
+  "id": "block_file_line_provider",
+  "label": "File Line Provider",
+  "name": "File Line Provider",
+  "description": "provide the Workflow with lines from a given file",
+  "color": "#0D41E1",
+  "type": "block",
+  "containerImage": "iai-artifactory.iai.kit.edu/docker-webis/proof-2/proof-standard:latest",
+  "communicationParadigm": "STEPBASED",
+  "position": {
+    "x": 0,
+    "y": 20
+  },
+  "program": {
+    "id": "prog_file_line_provider",
+    "label": "prog_file_line_provider",
+    "description": "provide other blocks with one line per SYNC from a given file",
+    "tag": "testFLP",
+    "runtime": "PYTHON",
+    "entryPoint": "attachment_file_line_provider",
+    "attachments": [
+      {
+        "id": "attachment_file_line_provider",
+        "label": "file_line_provider.py",
+        "description": "provide other blocks with one line per SYNC from a given file",
+        "path": "/proof/latest:file_line_provider.py",
+        "createdBy": "anonymous",
+        "lastModifiedBy": "anonymous",
+        "creationDate": "2025-04-23T12:55:29.246712+00:00",
+        "lastModifiedDate": "2025-04-23T12:55:29.246713+00:00"
+      }
+    ],
+    "createdBy": "anonymous",
+    "lastModifiedBy": "anonymous",
+    "creationDate": "2025-04-23T12:55:29.246605+00:00",
+    "lastModifiedDate": "2025-04-23T12:55:29.246705+00:00"
+  },
+  "eventLifeCycles": [],
+  "blockIODefinitions": [
+    {
+      "phase": "INIT",
+      "input": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {
+            "file_name": "file_name",
+            "num_steps": "num_steps",
+            "ignore_first_line": "ignore_first_line"
+          }
+        }
+      }
+    },
+    {
+      "phase": "EXECUTE",
+      "input": {},
+      "output": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {
+            "line": "line"
+          }
+        }
+      }
+    },
+    {
+      "phase": "FINALIZE",
+      "input": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {}
+        }
+      },
+      "output": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {}
+        }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "id": "7000cc5d-637d-4c7f-b961-a9c9e797c50b",
+      "label": "line",
+      "description": "Output: line",
+      "type": "STRING",
+      "phase": "EXECUTE",
+      "eventId": 1,
+      "communicationType": "STEPBASED",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:55:29.246744+00:00",
+      "lastModifiedDate": "2025-04-23T12:55:29.246745+00:00"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "689eef18-1189-4538-9019-7d7a646d9af4",
+      "required": true,
+      "label": "file_name",
+      "description": "Input: file_name",
+      "type": "STRING",
+      "phase": "INIT",
+      "eventId": 0,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:55:29.246723+00:00",
+      "lastModifiedDate": "2025-04-23T12:55:29.246725+00:00"
+    },
+    {
+      "id": "e2063aa3-e694-4593-8f54-d322b977971e",
+      "required": false,
+      "label": "num_steps",
+      "description": "Input: num_steps",
+      "type": "INTEGER",
+      "phase": "INIT",
+      "eventId": 0,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:55:29.246731+00:00",
+      "lastModifiedDate": "2025-04-23T12:55:29.246733+00:00"
+    },
+    {
+      "id": "509cea6d-dc33-4e2a-af9d-b8b0475d8c46",
+      "required": false,
+      "label": "ignore_first_line",
+      "description": "Input: ignore_first_line",
+      "type": "STRING",
+      "phase": "INIT",
+      "eventId": 1,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:55:29.246738+00:00",
+      "lastModifiedDate": "2025-04-23T12:55:29.246739+00:00"
+    }
+  ],
+  "createdBy": "anonymous",
+  "lastModifiedBy": "anonymous",
+  "creationDate": "2025-04-23T12:55:29.246708+00:00",
+  "lastModifiedDate": "2025-04-23T12:55:29.246709+00:00",
+  "shutdownRelevant": false
+}

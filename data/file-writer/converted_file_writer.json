@@ -1,0 +1,144 @@
+{
+  "id": "block_file_writer",
+  "label": "File Writer",
+  "name": "File Writer",
+  "description": "Write data to a file",
+  "color": "#0D41E1",
+  "type": "block",
+  "containerImage": "iai-artifactory.iai.kit.edu/docker-webis/proof-2/proof-standard:latest",
+  "communicationParadigm": "STEPBASED",
+  "position": {
+    "x": 0,
+    "y": 20
+  },
+  "program": {
+    "id": "prog_file_writer",
+    "label": "prog_file_writer",
+    "description": "write data to a file",
+    "tag": "test",
+    "runtime": "PYTHON",
+    "entryPoint": "attachment_file_writer",
+    "attachments": [
+      {
+        "id": "attachment_file_writer",
+        "label": "file_writer.py",
+        "description": "write data to a file",
+        "path": "/proof/latest:file_writer.py",
+        "createdBy": "anonymous",
+        "lastModifiedBy": "anonymous",
+        "creationDate": "2025-04-23T12:54:45.033987+00:00",
+        "lastModifiedDate": "2025-04-23T12:54:45.033988+00:00"
+      }
+    ],
+    "createdBy": "anonymous",
+    "lastModifiedBy": "anonymous",
+    "creationDate": "2025-04-23T12:54:45.033715+00:00",
+    "lastModifiedDate": "2025-04-23T12:54:45.033980+00:00"
+  },
+  "eventLifeCycles": [],
+  "blockIODefinitions": [
+    {
+      "phase": "INIT",
+      "input": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {
+            "file_name": "file_name",
+            "mode": "mode",
+            "waitForSync": "waitForSync"
+          }
+        }
+      }
+    },
+    {
+      "phase": "EXECUTE",
+      "input": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {
+            "data": "data"
+          }
+        }
+      }
+    },
+    {
+      "phase": "FINALIZE",
+      "input": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {}
+        }
+      },
+      "output": {
+        "type": "STDIO",
+        "parameters": {
+          "mapping": {}
+        }
+      }
+    }
+  ],
+  "outputs": [],
+  "inputs": [
+    {
+      "id": "cd25d323-9544-4236-91a5-963e68dc3620",
+      "required": true,
+      "label": "file_name",
+      "description": "Input: file_name",
+      "type": "STRING",
+      "phase": "INIT",
+      "eventId": 0,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:54:45.033998+00:00",
+      "lastModifiedDate": "2025-04-23T12:54:45.033999+00:00"
+    },
+    {
+      "id": "ca76bf1a-6f3a-4754-87d8-924c8a9ac1d0",
+      "required": false,
+      "label": "mode",
+      "description": "Input: mode",
+      "type": "STRING",
+      "phase": "INIT",
+      "eventId": 0,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:54:45.034006+00:00",
+      "lastModifiedDate": "2025-04-23T12:54:45.034007+00:00"
+    },
+    {
+      "id": "1ad1aea4-e255-4324-9809-6923f537ec23",
+      "required": false,
+      "label": "waitForSync",
+      "description": "Input: waitForSync",
+      "type": "STRING",
+      "phase": "INIT",
+      "eventId": 0,
+      "communicationType": "STEPBASED_STATIC",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:54:45.034013+00:00",
+      "lastModifiedDate": "2025-04-23T12:54:45.034014+00:00"
+    },
+    {
+      "id": "f71ba36a-cb03-4353-adeb-a2d6985932e0",
+      "required": false,
+      "label": "data",
+      "description": "Input: data",
+      "type": "STRING",
+      "phase": "EXECUTE",
+      "eventId": 1,
+      "communicationType": "STEPBASED",
+      "createdBy": "anonymous",
+      "lastModifiedBy": "anonymous",
+      "creationDate": "2025-04-23T12:54:45.034018+00:00",
+      "lastModifiedDate": "2025-04-23T12:54:45.034019+00:00"
+    }
+  ],
+  "createdBy": "anonymous",
+  "lastModifiedBy": "anonymous",
+  "creationDate": "2025-04-23T12:54:45.033983+00:00",
+  "lastModifiedDate": "2025-04-23T12:54:45.033984+00:00",
+  "shutdownRelevant": false
+}

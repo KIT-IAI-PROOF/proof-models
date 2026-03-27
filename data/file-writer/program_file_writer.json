@@ -1,0 +1,13 @@
+{
+  "id": "prog_file_writer",
+  "name": "prog_file_writer",
+  "description": "write data to a file",
+  "tag": "test",
+  "runtime": "PYTHON",
+  "entryPoint": "attachment_file_writer",
+  "attachments": [
+    {
+      "id": "attachment_file_writer"
+    }
+  ]
+}

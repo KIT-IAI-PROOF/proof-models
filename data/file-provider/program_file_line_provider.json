@@ -1,0 +1,13 @@
+{
+  "id": "prog_file_line_provider",
+  "name": "prog_file_line_provider",
+  "description": "provide other blocks with one line per SYNC from a given file",
+  "tag": "testFLP",
+  "runtime": "PYTHON",
+  "entryPoint": "attachment_file_line_provider",
+  "attachments": [
+    {
+      "id": "attachment_file_line_provider"
+    }
+  ]
+}
