@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.kit.iai.webis</groupId>
+    <groupId>edu.kit.iai.webis.proof</groupId>
     <artifactId>proof-models</artifactId>
-    <version>3.4.1</version>
+    <version>1.0.0</version>
     <name>PROOF Domain</name>
     <description>PROOF Domain</description>
 
@@ -127,16 +127,15 @@
 
     <repositories>
         <repository>
-            <id>iai-artifactory</id>
-            <url>https://iai-artifactory.iai.kit.edu/artifactory/webis/</url>
+            <id>github-proof</id>
+            <url>https://maven.pkg.github.com/KIT-IAI-PROOF</url>
         </repository>
     </repositories>
 
     <distributionManagement>
         <repository>
-            <id>iai-artifactory</id>
-            <name>iai-artifactory</name>
-            <url>https://iai-artifactory.iai.kit.edu/artifactory/webis-common</url>
+            <id>github-proof</id>
+            <url>https://maven.pkg.github.com/KIT-IAI-PROOF/proof-models</url>
         </repository>
     </distributionManagement>
 
