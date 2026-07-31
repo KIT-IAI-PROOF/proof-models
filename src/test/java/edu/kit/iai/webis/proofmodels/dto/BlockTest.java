@@ -24,20 +24,14 @@ import static org.mockito.Mockito.mock;
 
 public class BlockTest {
 
-    private ProgramMapper programMapper;
-    private BlockMapper blockMapper;
+    private final ProgramMapper programMapper = mock(ProgramMapper.class);
+    private final BlockMapper blockMapper = Mappers.getMapper(BlockMapper.class);
 
     @BeforeEach
-    void setup() {
-        try {
-            programMapper = mock(ProgramMapper.class);
-            blockMapper = new BlockMapperImpl();
-            Field field = BlockMapperImpl.class.getDeclaredField("programMapper");
-            field.setAccessible(true);
-            field.set(blockMapper, programMapper);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to setup test", e);
-        }
+    void setup() throws NoSuchFieldException, IllegalAccessException {
+        Field field = BlockMapperImpl.class.getDeclaredField("programMapper");
+        field.setAccessible(true);
+        field.set(blockMapper, programMapper);
     }
 
     /**
