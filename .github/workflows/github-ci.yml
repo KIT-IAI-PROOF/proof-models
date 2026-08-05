@@ -1,6 +1,8 @@
 name: github-ci.yml
 on:
   push:
+    tags:
+        - "*"
 
 env:
   GITHUB_TOKEN: ${{ secrets.PROOF_PACKAGE_CI_TOKEN }}
