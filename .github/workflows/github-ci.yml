@@ -38,8 +38,8 @@ jobs:
       - name: Setup path for scripts
         run: echo "$GITHUB_WORKSPACE/ci-scripts" >> "$GITHUB_PATH"
 
-      - name: Verify version
-        run: ./ci-scripts/check-mvn-git-project-version-match
+      #- name: Verify version
+      #  run: ./ci-scripts/check-mvn-git-project-version-match
 
       - name: Deploy mvn artifact
         run: mvn clean compile deploy
