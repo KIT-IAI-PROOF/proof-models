@@ -196,11 +196,41 @@ public class ExecutionDao extends AAuditable implements Serializable {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ElementCollection(fetch = EAGER)
-    @CollectionTable(name = "APPLIED_INPUTS")
+    @CollectionTable(name = "EXEC_PARAMETERS")
     @MapKeyColumn(name = "id", length = 50)
     @Column(name = "value", length = 1000)
     @BatchSize(size = 20)
-    private Map<String, String> appliedInputs;
+    private Map<String, String> execParameters;
+
+    /**
+     * Represents the start values that were applied to inputs before execution.
+     * This is a map where keys are input IDs and values are the start values
+     * provided by the user for non-static inputs. The values are persisted
+     * in the EXEC_START_VALUES collection table.
+     */
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ElementCollection(fetch = EAGER)
+    @CollectionTable(name = "EXEC_START_VALUES")
+    @MapKeyColumn(name = "id", length = 50)
+    @Column(name = "value", length = 1000)
+    @BatchSize(size = 20)
+    @Nullable
+    private Map<String, String> execStartValues;
+
+    /**
+     * Represents the default values that were applied to inputs before execution.
+     * This is a map where keys are input IDs and values are the default values
+     * provided by the user for non-static inputs. The values are persisted
+     * in the EXEC_DEFAULT_VALUES collection table.
+     */
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ElementCollection(fetch = EAGER)
+    @CollectionTable(name = "EXEC_DEFAULT_VALUES")
+    @MapKeyColumn(name = "id", length = 50)
+    @Column(name = "value", length = 1000)
+    @BatchSize(size = 20)
+    @Nullable
+    private Map<String, String> execDefaultValues;
 
     /**
      * Callback method annotated with @PrePersist to automatically populate

@@ -91,6 +91,13 @@ public class Input implements Serializable {
     private String defaultValue;
 
     @Include
+    @Nullable
+    @JsonInclude
+    @JsonProperty("startValue")
+    @JsonView(Detail.class)
+    private String startValue;
+
+    @Include
     @JsonInclude
     @Nullable
     @JsonProperty("phase")
