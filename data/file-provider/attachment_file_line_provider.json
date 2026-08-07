@@ -1,5 +1,0 @@
-{
-  "id": "attachment_file_line_provider",
-  "fileName": "file_line_provider.py",
-  "description": "provide other blocks with one line per SYNC from a given file"
-}
