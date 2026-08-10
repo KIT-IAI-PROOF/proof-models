@@ -89,9 +89,23 @@ public class Execution implements Serializable {
     @Include
     @JsonInclude
     @Nullable
-    @JsonProperty("appliedInputs")
+    @JsonProperty("execParameters")
     @JsonView(Listing.class)
-    private Map<String, String> appliedInputs;
+    private Map<String, String> execParameters;
+
+    @Include
+    @JsonInclude
+    @Nullable
+    @JsonProperty("execStartValues")
+    @JsonView(Detail.class)
+    private Map<String, String> execStartValues;
+
+    @Include
+    @JsonInclude
+    @Nullable
+    @JsonProperty("execDefaultValues")
+    @JsonView(Detail.class)
+    private Map<String, String> execDefaultValues;
 
     @Include
     @Nullable

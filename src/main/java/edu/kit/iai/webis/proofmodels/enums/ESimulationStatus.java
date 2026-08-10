@@ -103,6 +103,11 @@ public enum ESimulationStatus {
     /**
      * An error/exception occurred in the finalize phase (phase 3 of 3).
      */
-    ERROR_FINALIZE
+    ERROR_FINALIZE,
+
+	/**
+	 * the wrapper uses this status to notify the worker that the (init) values are set
+	 */
+	VALUES_SET
 }
 

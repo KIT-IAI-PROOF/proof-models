@@ -60,6 +60,11 @@ public class InputDao extends AIOElement implements Serializable {
     @Column(name = "default_value")
     private String defaultValue;
 
+    @Nullable
+    @Include
+    @Column(name = "start_value")
+    private String startValue;
+
     @Builder
     @SuppressWarnings("unused")
     public InputDao(@Nullable final String label,
@@ -71,11 +76,13 @@ public class InputDao extends AIOElement implements Serializable {
                     @Nullable final String id,
                     @Nullable final Boolean required,
                     @Nullable final String modelVarName,
-                    @Nullable final String defaultValue) {
+                    @Nullable final String defaultValue,
+                    @Nullable final String startValue) {
         super(label, description, type, unit, phase, communicationType, modelVarName);
         this.id = id;
         this.required = required;
         this.defaultValue = defaultValue;
+        this.startValue = startValue;
     }
 
     /**
