@@ -118,7 +118,7 @@ public class StepBasedConfigurationDao extends AAuditable implements Serializabl
 
     /**
      * Timeout used by the orchestrator while waiting for notify messages from workers.
-     * The value is interpreted as milliseconds.
+     * The value is interpreted as seconds.
      */
     @Nullable
     @Include
@@ -127,7 +127,7 @@ public class StepBasedConfigurationDao extends AAuditable implements Serializabl
 
     /**
      * Timeout used by workers while waiting for required input values.
-     * The value is interpreted as milliseconds.
+     * The value is interpreted as seconds.
      */
     @Nullable
     @Include
