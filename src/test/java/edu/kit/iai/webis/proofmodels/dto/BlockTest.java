@@ -8,11 +8,9 @@ import edu.kit.iai.webis.proofmodels.enums.ESimulationStatus;
 import edu.kit.iai.webis.proofmodels.enums.EBlockType;
 import edu.kit.iai.webis.proofmodels.enums.ECommunicationParadigm;
 import edu.kit.iai.webis.proofmodels.mapper.BlockMapper;
-import edu.kit.iai.webis.proofmodels.mapper.BlockMapperImpl;
 import edu.kit.iai.webis.proofmodels.mapper.ProgramMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
 
 import java.lang.reflect.Field;
 import java.time.Instant;
@@ -24,14 +22,25 @@ import static org.mockito.Mockito.mock;
 
 public class BlockTest {
 
-    private final ProgramMapper programMapper = mock(ProgramMapper.class);
-    private final BlockMapper blockMapper = Mappers.getMapper(BlockMapper.class);
+    private ProgramMapper programMapper;
+    private BlockMapper blockMapper;
 
-    @BeforeEach
-    void setup() throws NoSuchFieldException, IllegalAccessException {
-        Field field = BlockMapperImpl.class.getDeclaredField("programMapper");
-        field.setAccessible(true);
-        field.set(blockMapper, programMapper);
+    private void initializeMapper() throws Exception {
+        if (blockMapper == null) {
+            programMapper = mock(ProgramMapper.class);
+            
+            // Get BlockMapperImpl class using reflection to avoid importing generated class
+            Class<?> blockMapperImplClass = Class.forName("edu.kit.iai.webis.proofmodels.mapper.BlockMapperImpl");
+            Object mapperImpl = blockMapperImplClass.getDeclaredConstructor().newInstance();
+            
+            // Set the programMapper field via reflection
+            Field field = blockMapperImplClass.getDeclaredField("programMapper");
+            field.setAccessible(true);
+            field.set(mapperImpl, programMapper);
+            
+            // Cast to interface
+            blockMapper = (BlockMapper) mapperImpl;
+        }
     }
 
     /**
@@ -39,7 +48,8 @@ public class BlockTest {
      * when all attributes are populated.
      */
     @Test
-    public void testConvert_AllFieldsPopulated() {
+    public void testConvert_AllFieldsPopulated() throws Exception {
+        initializeMapper();
 
         // Arrange
         Block block = Block.builder()
@@ -91,7 +101,8 @@ public class BlockTest {
      * Tests if the convert method handles nulls properly when optional fields are not populated.
      */
     @Test
-    public void testConvert_NullFields() {
+    public void testConvert_NullFields() throws Exception {
+        initializeMapper();
 
         // Arrange
         Block block = Block.builder()
@@ -144,7 +155,8 @@ public class BlockTest {
      * Tests if the convert method correctly sets the shutdownRelevant flag in the BlockDao.
      */
     @Test
-    public void testConvert_ShutdownRelevant() {
+    public void testConvert_ShutdownRelevant() throws Exception {
+        initializeMapper();
 
         // Arrange
         Block block = Block.builder().id("123").shutdownRelevant(true).build();
