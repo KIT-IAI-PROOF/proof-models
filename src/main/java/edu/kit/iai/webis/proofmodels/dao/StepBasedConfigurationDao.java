@@ -117,6 +117,24 @@ public class StepBasedConfigurationDao extends AAuditable implements Serializabl
     private Map<String, StepSizeDefinitionDao> stepSizeDefinitions;
 
     /**
+     * Timeout used by the orchestrator while waiting for notify messages from workers.
+     * The value is interpreted as seconds.
+     */
+    @Nullable
+    @Include
+    @Column(name = "worker_timeout")
+    private Long workerTimeout;
+
+    /**
+     * Timeout used by workers while waiting for required input values.
+     * The value is interpreted as seconds.
+     */
+    @Nullable
+    @Include
+    @Column(name = "input_timeout")
+    private Long inputTimeout;
+
+    /**
      * Callback method annotated with @PrePersist to automatically populate
      * the `id` field with a randomly generated UUID if it is null before
      * persisting the entity.

@@ -111,11 +111,25 @@ public class StepBasedConfiguration implements Serializable {
     private Instant creationDate;
 
     @Include
-    @JsonInclude
     @Nullable
+    @JsonInclude
     @JsonProperty("lastModifiedDate")
     @JsonView(Listing.class)
     @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Instant lastModifiedDate;
+
+    @Include
+    @JsonInclude
+    @Nullable
+    @JsonProperty("workerTimeout")
+    @JsonView(Detail.class)
+    private Long workerTimeout;
+
+    @Include
+    @JsonInclude
+    @Nullable
+    @JsonProperty("inputTimeout")
+    @JsonView(Detail.class)
+    private Long inputTimeout;
 
 }
